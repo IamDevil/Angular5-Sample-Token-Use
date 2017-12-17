@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Get Member List </h2>
+  <p>The information contain id and name</p>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of member_list">
+          <td>{{ member.ID }}</td>
+          <td>{{ member.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
