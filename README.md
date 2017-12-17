@@ -1,27 +1,51 @@
 # WayneLinAPP
+# Example app with Angular 5 + Angular CLI + NodeJS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
+> ### Base project 
+* Angular 5
+* BootStrap
+* PostgreSQL
+* NodeJS
 
-## Development server
+### DEMO
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Live DEMO [here](http://172.104.110.249:7231)!
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Warning: we strongly recommend node >=v6.9.0 and npm >=3.0.0**
 
-## Build
+`npm i` - Installs everything needed
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+`npm start` - Starts the app. Then, go to `localhost:7231`
 
-## Running unit tests
+`npm build` - compile angular code
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Features
+* HttpClient get post
+* Token valid
+* BackEnd and FrontEnd
+* MeanAPP
+* SPA
+* RWD
+* AutoRefreshToken
+* Automoitcally Loggin
 
-## Running end-to-end tests
+## Contributing
+- Please see the CONTRIBUTING file for guidelines.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Server
 
-## Further help
+This repo is using an API which is [a minimal app](https://github.com/Ismaestro/nodejs-example-app) in NodeJS and using PostGreSQL, to create and delete member.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Contributors
+
+Thanks to all contributors and their support!
+
+## License
+
+MIT
+
+Enjoy :metal:
+
+We are always happy to hear your feedback!
