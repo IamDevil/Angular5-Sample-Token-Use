@@ -9,28 +9,23 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { MemberData } from '../../share/MemberData';
 import { ResponseData } from '../../share/ResponseData';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable()
 export class MemberService {
-  member_url = "/member";
-  constructor(private newLoginService : LoginService, private http: HttpClient) { }
+  member_url = "http://172.104.110.249:7231/member";
+  constructor(private http: HttpClient) { }
 
   getMember(): Observable<MemberData> {
-      let httpOptions = {
-          headers: new HttpHeaders({ 'Authorization': this.newLoginService.getToken() })
-      };
 
-      return this.http.get<MemberData>(this.member_url, httpOptions).pipe(
+      return this.http.get<MemberData>(this.member_url).pipe(
           tap(_ => console.log('get Member List'))
       );
     }
 
   addMember(name) {
-      let httpOptions = {
-          headers: new HttpHeaders({
-              'Content-Type': 'application/json',
-              'Authorization': this.newLoginService.getToken() })
-      };
-
       let param = {
           'name' : name
       }

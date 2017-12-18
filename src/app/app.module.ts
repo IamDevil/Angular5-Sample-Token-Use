@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 //import { InMemoryDataService }  from './in-memory-data.service';
+
 import { LoginComponent } from './login/login.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { MemberCreateComponent } from './member-create/member-create.component';
@@ -14,7 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import {LoginService} from './service/login/login.service';
 import {MemberService} from './service/member/member.service';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './auth/auth.guard';
+import { TokenInterceptor } from './auth/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,11 @@ import { AuthGuard } from './auth.guard';
  // ),
     AppRoutingModule
   ],
-  providers: [AuthGuard, LoginService, MemberService],
+  providers: [AuthGuard, LoginService, MemberService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

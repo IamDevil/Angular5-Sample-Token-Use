@@ -19,7 +19,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon"><i class="fa fa-user"></i></div>
                         <input type="text" name="account" class="form-control" id="account"
-                               placeholder="Account" [(ngModel)]="account" required autofocus>
+                               placeholder="Account" #account required autofocus>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon"><i class="fa fa-lock"></i></div>
                         <input type="password" name="password" class="form-control" id="password"
-                               placeholder="Password" [(ngModel)]="password" required>
+                               placeholder="Password" #password required>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 mx-auto">
-                <button type="submit" class="btn btn-success btn-login" (click)="userValid()"><i class="fa fa-sign-in"></i> Login</button>
+                <button type="submit" class="btn btn-success btn-login" (click)="userValid(account.value, password.value)"><i class="fa fa-sign-in"></i> Login</button>
             </div>
         </div>
     </div>

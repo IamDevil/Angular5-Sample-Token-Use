@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { MemberCreateComponent } from './member-create/member-create.component';
 
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     data: { title: 'MemberCreate' },
     canActivate: [AuthGuard]
   }
-]; 
+];
 
 
 @NgModule({

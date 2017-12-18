@@ -11,17 +11,14 @@ import { TokenStatus } from '../share/TokenStatus';
   providers: []
 })
 export class LoginComponent implements OnInit {
-  account : string = "ken";
-  password : string = "hello";
-
   constructor(private router: Router, private newLoginService : LoginService) { }
 
   ngOnInit() {
       this.newLoginService.loginOut();
   }
 
-  userValid() {
-      this.newLoginService.valid(this.account, this.password)
+  userValid(account, password) {
+      this.newLoginService.valid(account, password)
       .subscribe(TokenData => {
           if(TokenData.success) {
               this.newLoginService.setToken(TokenData.token);

@@ -15,13 +15,14 @@ const httpOptions = {
 
 @Injectable()
 export class LoginService {
-	login_url = "/";
-    refresh_toekn_url = "/refresh";
+	login_url = "http://172.104.110.249:7231/";
+    refresh_toekn_url = "http://172.104.110.249:7231/refresh";
 	token_status: TokenStatus;
     my_timer;
 
 	constructor(private http: HttpClient, private router: Router) {
         this.token_status = JSON.parse(localStorage.getItem('TokenStatus'));
+        this.laterRreshToken();
     }
 
     loginOut() {
@@ -43,15 +44,14 @@ export class LoginService {
     setToken(token_status : TokenStatus) {
         localStorage.setItem('TokenStatus', JSON.stringify(token_status));
         this.token_status = token_status;
-
-        if(this.my_timer) {
-            clearTimeout(this.my_timer);
-        }
-
         this.laterRreshToken();
     }
 
     laterRreshToken() {
+        if(this.my_timer) {
+            clearTimeout(this.my_timer);
+        }
+
         if(this.token_status) {
             if(this.token_status.exp > this.token_status.iat + 60) { // 最後60秒
                 this.my_timer = setTimeout(_ => { this.refreshToken() }, (this.token_status.exp - this.token_status.iat - 60) * 1000);
@@ -82,7 +82,7 @@ export class LoginService {
         });
 	}
 
-	getToken(): string {
-		return this.token_status && this.token_status.token || null;
-	}
+    getToken(): string {
+        return this.token_status && this.token_status.token || null;
+    }
 }
